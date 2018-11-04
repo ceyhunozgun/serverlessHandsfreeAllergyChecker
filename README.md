@@ -1,6 +1,4 @@
-# serverlessHandsfreeAllergyChecker
-Serverless Hands-free Allergy Checker for AWS AI Hackathon. 
-Uses Amazon Rekognition, Polly, Lex and Cognito.
+# Serverless Hands-free Allergy Checker for AWS AI Hackathon. 
 
 An allergy checker system designed for emergency services personnel. 
 It lets them save and check drug allergy information easily to prevent anaphylactic shocks.
@@ -11,12 +9,22 @@ The OTP code is extracted using text detection using text detection.
 Allergy information of the patients is saved with the picture of the patient. 
 Later that information can be retrieved using face recognition.
 
-The system has the following functions:
+The system has been designed as a fully serverless Single Page App (SPA) web-app. It has the following functions:
 - Administrator can add and delete emergency personnel (doctors, etc) with their picture.
 - Doctors can login with their face and an OTP code sent to their email address.
 - Login and in-app functions are completely hands-free using voice interface for the doctors. 
 - Doctors can add patients with allergy information and with their picture.
 - At a later patient visit, doctors can check allergy information using the picture of the patient easily.
+
+It uses following AWS services:
+- Polly: For talking to the user
+- [Amazon Lex](https://aws.amazon.com/tr/lex/): For accepting voice commands
+- [Amazon Rekognition](https://aws.amazon.com/tr/rekognition/) : For recognizing doctors and patients and detecting OTP codes
+- [AWS Lambda](http://aws.amazon.com/lambda/): For indexing faces and custom OTP authentication
+- [Amazon S3](http://aws.amazon.com/s3/): For storing pictures and web site files
+- [Amazon DynamoDB](http://aws.amazon.com/dynamodb/): For storing patient allergy information
+- [Amazon Cognito](http://aws.amazon.com/cognito/): For authentication
+- [Amazon Simple Email Service (SES)](https://aws.amazon.com/tr/ses/): For sending OTP code emails
 
 ## License
 
