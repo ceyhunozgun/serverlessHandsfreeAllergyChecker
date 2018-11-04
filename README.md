@@ -150,3 +150,7 @@ Doctors can log out by saying 'log out'
 **Please remember to delete the created AWS resources if they are not used anymore.**
 A Bash script [uninstall.sh](uninstall.sh) is provided to delete the created resources.
 Please **be carefull when running this script as it will delete the resources that are configured in config.json file.**
+
+## Thanks
+
+I would like to thank [Danilo Poccia](https://danilop.net/) as I used his init.sh script from his [LambdAuth](https://github.com/danilop/LambdAuth) project to create install.sh.
