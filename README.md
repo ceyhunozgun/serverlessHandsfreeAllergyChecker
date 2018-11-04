@@ -16,7 +16,7 @@ The system has been designed as a fully serverless Single Page App (SPA) web-app
 - At a later patient visit, doctors can check allergy information using the picture of the patient easily.
 
 It uses following AWS services:
-- Polly: For talking to the user
+- [Amazon Polly](https://aws.amazon.com/tr/polly/): For talking to the user
 - [Amazon Lex](https://aws.amazon.com/tr/lex/): For accepting voice commands
 - [Amazon Rekognition](https://aws.amazon.com/tr/rekognition/) : For recognizing doctors and patients and detecting OTP codes
 - [AWS Lambda](http://aws.amazon.com/lambda/): For indexing faces and custom OTP authentication
