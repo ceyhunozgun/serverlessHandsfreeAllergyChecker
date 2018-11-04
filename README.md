@@ -127,8 +127,9 @@ The OTP code must be shown to the camera to extract the code using text detectio
 If the detected OTP code is validated, they are logged in automatically.
 
 After login, the doctors add or check patients using their voices.
-The detailed information about bot commands, sample patient names and sample allergen names are can be found in my previous blog entry []( https://hackernoon.com/serverless-allergy-checker-with-amazon-rekognition-lex-polly-dynamodb-s3-and-lambda-35fd215b51b0 ).
-I have made a few additions which you can the find details in the Lex bot export file.
+The detailed information about bot commands, sample patient names and sample allergen names are can be found in my previous blog entry [Serverless Allergy Checker with Amazon Rekognition, Lex, Polly, DynamoDB, S3 and Lambda](https://hackernoon.com/serverless-allergy-checker-with-amazon-rekognition-lex-polly-dynamodb-s3-and-lambda-35fd215b51b0).
+I have made a few additions which you can the find the details in the Lex bot export file ([LICENSE](LICENSE)
+
 
 ### Adding patients
 
