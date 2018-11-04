@@ -147,6 +147,6 @@ Doctors can log out by saying 'log out'
 
 ## Uninstallation
 
-** Please remember to delete the created AWS resources if they are not used anymore.**
+**Please remember to delete the created AWS resources if they are not used anymore.**
 A Bash script [uninstall.sh](uninstall.sh) script is provides to delete created resources.
-Please ** be carefull when running this script as it will delete the resources that are configured in config.json file. **
+Please **be carefull when running this script as it will delete the resources that are configured in config.json file.**
