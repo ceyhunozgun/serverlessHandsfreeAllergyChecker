@@ -1,4 +1,4 @@
-# Serverless Hands-free Allergy Checker for AWS AI Hackathon. 
+# Serverless Hands-free Allergy Checker for AWS AI Hackathon 
 
 An allergy checker system designed for emergency services personnel. 
 It lets them save and check drug allergy information easily to prevent anaphylactic shocks.
