@@ -33,7 +33,7 @@ This code is licensed under the The MIT License (MIT). Please see the LICENSE fi
 
 ## Installation
 
-An installation script using Bash (`init.sh`) is provided to install and configure all necessary resources in your AWS account:
+An installation script using Bash [install.sh](install.sh) is provided to install and configure all necessary resources in your AWS account:
 
 - the [AWS Identity and Access Management (IAM)](http://aws.amazon.com/iam/) roles for Amazon Cognito and other services
 - the [Amazon S3](http://aws.amazon.com/s3/) bucket to save user and patient pictures and to host the HTML pages
@@ -99,7 +99,7 @@ The `init.sh` script requires a configured [AWS Command Line Interface (CLI)](ht
 
 ```
 
-After the installation with the `init.sh` script, you should verify the email address you choose to send emails.
+After the installation with the `install.sh` script, you should verify the email address you choose to send emails.
 AWS SES will send a verification email with a link you can click to verify.
 
 After the email verification, you can start using the app pointing your browser to:
@@ -145,3 +145,8 @@ After the picture of the patient is taken, the allergen information is checked a
 
 Doctors can log out by saying 'log out'
 
+## Uninstallation
+
+** Please remember to delete the created AWS resources if they are not used anymore.**
+A Bash script [uninstall.sh](uninstall.sh) script is provides to delete created resources.
+Please ** be carefull when running this script as it will delete the resources that are configured in config.json file. **
