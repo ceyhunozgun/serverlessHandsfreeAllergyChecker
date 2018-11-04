@@ -3,8 +3,7 @@
 An allergy checker system designed for emergency services personnel. 
 It lets them save and check drug allergy information easily to prevent anaphylactic shocks.
 It provides hands-free usage with voice interface and personnel can login with their face and an OTP code.
-
-The OTP code is extracted using text detection using text detection.
+The OTP code is extracted using text detection.
 
 Allergy information of the patients is saved with the picture of the patient. 
 Later that information can be retrieved using face recognition.
