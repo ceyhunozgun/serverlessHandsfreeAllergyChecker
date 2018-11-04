@@ -1,0 +1,23 @@
+{
+  "AWS_ACCOUNT_ID": "123412341234",
+  "CLI_PROFILE": "default",
+  "REGION": "eu-west-1",
+  "BUCKET": "allergychecker-bucket",
+
+  "DDB_TABLE": "AllergyCheckerPatients",
+
+  "USER_FACE_COLLECTION_ID": "allergychecker-users",
+  "PATIENT_FACE_COLLECTION_ID": "allergychecker-patients",
+
+  "FROM_ADDRESS": "user@example.com",
+
+  "USER_POOL_NAME": "AllergyCheckerUserPool",
+  "ID_POOL_NAME": "AllergyCheckerIdentityPool",
+  "POLICY_NAME": "AllergyCheckerPolicy",
+  "ROLE_NAME": "AllergyCheckerRole",
+
+  "UP_DEF_AUTH_LAMBDA_NAME": "AllergyCheckerDefineAuthChallenge",
+  "UP_CRE_AUTH_LAMBDA_NAME": "AllergyCheckerCreateAuthChallenge",
+  "UP_VER_AUTH_LAMBDA_NAME": "AllergyCheckerVerifyAuthChallenge",
+  "PATIENT_FACE_INDEXER_LAMBDA_NAME": "AllergyCheckerPatientFaceIndexer"
+}

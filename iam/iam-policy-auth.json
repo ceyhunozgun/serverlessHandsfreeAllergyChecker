@@ -1,0 +1,42 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+         {
+            "Effect": "Allow",
+            "Action": [
+                "ses:SendEmail",
+				"cognito-idp:AdminCreateUser",
+				"cognito-idp:ListUsers",
+				"cognito-idp:AdminDeleteUser",
+				"dynamodb:GetItem",
+                "dynamodb:PutItem",
+				"lex:PostContent",
+				"lex:PostText",
+				"polly:SynthesizeSpeech",
+				"s3:PutObject",
+                "s3:PutObjectAcl",
+				"lambda:InvokeFunction",
+                "rekognition:IndexFaces",
+                "rekognition:SearchFacesByImage",
+				"rekognition:DetectText",
+				"mobileanalytics:PutEvents",
+                "cognito-sync:*",
+                "cognito-identity:*"
+            ],
+            "Resource": "*"
+        },
+		{
+			"Effect": "Allow",
+			"Action": [
+				"dynamodb:DescribeStream",
+				"dynamodb:GetRecords",
+				"dynamodb:GetShardIterator",
+				"dynamodb:ListStreams",
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Resource": "*"
+		}
+    ]
+}

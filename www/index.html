@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Serverless Hands-free Allergy Checker</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link href="https://fonts.googleapis.com/css?family=Muli:400,300" rel="stylesheet">
+	<style>
+
+		.dashboard-page {
+		  padding-top: 50px;
+		  display: none
+		}
+		
+		.login-page {
+		  width: 360px;
+		  padding: 8% 0 0;
+		  margin: auto;
+		}
+		
+		.form {
+			border-radius: 4px;
+		  position: relative;
+		  z-index: 1;
+		  background: #FFFFFF;
+		  margin: 10px;
+		  padding: 10px;
+		  text-align: center;
+		  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+		  font-family: 'Muli', sans-serif;
+		  
+		}
+		.form label {
+		  font-size: 20px;
+		  display: block;
+		}
+		.form input {
+		  outline: 0;
+		  background: #f2f2f2;
+		  border-radius: 4px;
+		  border: 1px solid gray;
+		  margin: 0 0 8px;
+		  padding: 8px;
+		  box-sizing: border-box;
+		  font-size: 18px;
+		  display: block;
+		  width: 100%;
+		}
+		.form button {
+			font-size: 20px;
+			border-radius: 4px;
+		  outline: 0;
+		  background: #4CAF50;
+		  border: 0;
+		  padding: 10px;
+		  color: #FFFFFF;
+
+		  -webkit-transition: all 0.3 ease;
+		  transition: all 0.3 ease;
+		  cursor: pointer;
+		}
+		.form button:hover,.form button:active,.form button:focus {
+		  background: #43A047;
+		}
+		.form .header {
+			font-size: 24px;
+			font-weight: bold;
+			display: block;
+			margin-bottom: 24px;
+			text-align: center;
+		}
+		
+		.form .message {
+		  margin: 15px 0 0;
+		  color: #b3b3b3;
+		  font-size: 12px;
+		}
+		.form .message a {
+		  color: #4CAF50;
+		  text-decoration: none;
+		}
+		.form .register-form {
+		  display: none;
+		}
+		.container {
+		  position: relative;
+		  z-index: 1;
+		  max-width: 300px;
+		  margin: 0 auto;
+		}
+		.container:before, .container:after {
+		  content: "";
+		  display: block;
+		  clear: both;
+		}
+		.container .info {
+		  margin: 50px auto;
+		  text-align: center;
+		}
+		.container .info h1 {
+		  margin: 0 0 15px;
+		  padding: 0;
+		  font-size: 36px;
+		  font-weight: 300;
+		  color: #1a1a1a;
+		}
+		.container .info span {
+		  color: #4d4d4d;
+		  font-size: 12px;
+		}
+		.container .info span a {
+		  color: #000000;
+		  text-decoration: none;
+		}
+		.container .info span .fa {
+		  color: #EF3B3A;
+		}
+		body {
+		  background: #76b852; /* fallback for old browsers */
+		  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+		  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+		  background: -o-linear-gradient(right, #76b852, #8DC26F);
+		  background: linear-gradient(to left, #76b852, #8DC26F);
+		  font-family: 'Muli', sans-serif;
+		  -webkit-font-smoothing: antialiased;
+		  -moz-osx-font-smoothing: grayscale;      
+		}
+		
+		table {
+			background-color: black;
+		}
+		
+		th {
+			background-color: lightgray;
+		}
+		
+		td {
+			background-color: white;
+			padding: 5px;
+		}
+		
+		#audioRecdPanel {
+			float: right;
+			background-color: white;
+		}
+		
+		.center
+		{
+			margin: 0 auto;
+			position: relative;
+			text-align: center
+		}
+		
+		#pictureGrabber
+		{
+			width: 660;
+			height: 490;
+			top: 2%;
+			
+			text-align: center;
+		}
+		
+		.chatContainer
+		{
+			width: 90%;
+			top: 23%;
+			position: relative;
+			background: white;
+			margin: 0 auto;
+			border: 1px solid black;
+		}
+		
+		.chat
+		{
+		  clear: both;
+		  width: auto;
+		  border: none;
+		  padding: 2px;
+		  background-color: white;
+		  overflow:scroll; 
+		  height:400px;
+		}
+		
+		.chat p
+		{
+		  font-size: 14px;
+		  font-weight: bold;
+		  border-radius: 6px;
+		  padding: 6px;
+		  clear: both;
+		  border: 1px solid navy;
+		  margin-bottom: 3px;
+		  margin-top: 3px;
+		}
+		
+		.me 
+		{
+		  float: left;
+		  background-color: #bcd4ae;
+		  margin-right: 20%;
+		}
+		
+		.bot
+		{
+		  float: right;
+		  background-color: #EEEEEE;
+		  margin-left: 20%;
+		  text-align: left;
+		}
+		
+		.speechStatus
+		{
+			font-size: 16px;
+			font-weight: bold;
+			background-color: #71ce3c;
+			width: auto;
+			border-bottom: 1px solid black;
+			padding: 2px;
+		}
+		
+		#video {
+		  border: 1px solid black;
+		  box-shadow: 2px 2px 3px black;
+		}
+		
+		#photo {
+		  border: 1px solid black;
+		  box-shadow: 2px 2px 3px black;
+		}
+		#photoFounded {
+		  border: 1px solid black;
+		  box-shadow: 2px 2px 3px black;
+		}
+		
+		#canvas {
+		  display: none;
+		}
+		
+		#camera {
+		  display: none;
+		  margin: 0 auto;
+		}
+		
+		#output {
+		  display: none;
+		  margin: 0 auto;
+		}
+		#outputFounded {
+		  display: none;
+		  margin: 0 auto;
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.344.0.js"></script>
+	<script src="aws-cognito-sdk.js"></script>
+	<script src="amazon-cognito-identity.js"></script>
+	<script src="config.js"></script>
+	<script src="awsAIServices.js"></script>
+	<script src="awsServices.js"></script>
+	<script src="mediaManager.js"></script>
+	<script src="awsCognitoAuthenticator.js"></script>
+	<script src="userManager.js"></script>
+	<script src="faceRecognitionAuthenticator.js"></script>
+	<script src="allergyChecker.js"></script>
+	<script>	
+	
+	var authenticator;
+	var faceRecognitionAuthenticator;
+	var userManager;
+	var allergyChecker;
+			
+	function initAllergyChecker(username, name, region) {
+		allergyChecker = new AllergyChecker(username, name, region, logout);
+		allergyChecker.init(function () {
+			allergyChecker.start();
+		});
+	}
+	
+	var loggedInUser;
+	
+	function getAttributeValue(attrs, name) {
+		var value = null;
+
+		attrs.forEach(function (e) {
+			if (e.Name === name)
+				value = e.Value;
+		})
+		return value;
+    }
+	
+	function loggedIn(user) {
+		if (faceRecognitionAuthenticator) {
+			faceRecognitionAuthenticator.destroy();
+			faceRecognitionAuthenticator = null;
+		}
+		$('#otpDiv').hide();
+		$("#unAuthenticated").hide();
+		$("#page").show();
+		loggedInUser = user;
+		if (user.getUsername() === 'admin') {
+			$('#userMgmtIntfDiv').show();
+			$("#patientInterfaceDiv").hide();
+			$('#loginInfo').html('Welcome ' + user.getUsername());	
+		}
+		else {
+			$('#userMgmtIntfDiv').hide();
+			$("#patientInterfaceDiv").show();
+			user.getUserAttributes(function (err, data) {
+				var name =  getAttributeValue(data, 'name');
+				$('#loginInfo').html('Welcome ' + name + '(' + user.getUsername() + ')');	
+				initAllergyChecker(user.getUsername(), name, AWS_REGION);
+			});
+		}
+	}
+	
+	function logout() {
+		if (loggedInUser) {
+		
+			if (allergyChecker) {
+				allergyChecker.destroy();
+				allergyChecker = null;
+			}
+			
+			loggedInUser.globalSignOut({onFailure: function () {}, onSuccess: function() {}});
+			AWS.config.credentials.clearCachedId();
+			AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+				IdentityPoolId: IDENTITY_POOL_ID
+			});
+			$('#loginWithUsernameDiv').hide();
+			$('#loginWithFaceRecognitionDiv').hide();
+
+			$("#unAuthenticated").show();
+			$('#usernameDiv').show();
+			$('#otpDiv').hide();
+
+			$("#page").hide();
+		}
+	}
+	
+	function loginWithUsername(event) {
+		var username = $('#username').val();
+		authenticator = new AWSCognitoAuthenticator(USER_POOL_ID, APP_CLIENT_ID, IDENTITY_POOL_ID, AWS_REGION);
+		authenticator.authenticate(username, {
+			success: function (cognitoUser) {
+				loggedIn(cognitoUser);
+			},
+			failure: function (err) {
+				alert(err);
+			},
+			customChallengeRequired: function () {
+				$('#usernameDiv').hide();
+				$('#otpDiv').show();
+			}
+		});
+	}
+
+	function sendOtp() {
+		var otpCode = $('#otpCode').val();
+		
+		authenticator.checkOtp(otpCode);
+	}
+	
+	function startFaceRecognitionLogin() {
+		if (faceRecognitionAuthenticator) {
+			faceRecognitionAuthenticator.destroy();
+			faceRecognitionAuthenticator = null;
+		}
+		faceRecognitionAuthenticator = new FaceRecognitionAuthenticator(IDENTITY_POOL_ID, AWS_REGION);
+		faceRecognitionAuthenticator.init(function () {
+		});
+		faceRecognitionAuthenticator.start();
+	}
+	
+	function listUsersClicked() {
+		$("#addUserDiv").hide();
+		$("#listUsersDiv").show();
+		
+		var userManager2 = new UserManager(AWS_REGION);
+		
+		userManager2.listUsers();
+	}
+	
+	function initPage() {
+		$("#loginBtn").click(loginWithUsername);
+		$("#sendOtp").click(sendOtp);
+		
+		$("#logout").click(logout);
+		
+		$("#loginWithUsernameBtn").click(function () {
+			$('#loginWithUsernameDiv').show();
+			$('#loginWithFaceRecognitionDiv').hide();
+
+			$('#usernameDiv').show();
+			$('#otpDiv').hide();
+			
+			if (faceRecognitionAuthenticator) {
+				faceRecognitionAuthenticator.destroy();
+				faceRecognitionAuthenticator = null;
+			}
+		});
+		$("#loginWithFaceRecognitionBtn").click(function () {
+			$('#loginWithUsernameDiv').hide();
+			$('#loginWithFaceRecognitionDiv').show();
+			startFaceRecognitionLogin();
+		});
+		
+		$('#addUserBtn').click(function () {
+			$("#addUserDiv").show();
+			$("#listUsersDiv").hide();
+			
+			if (userManager == null) {
+				userManager = new UserManager(AWS_REGION);
+			
+				userManager.init(null, listUsersClicked);
+			}
+			userManager.initAddUser();
+		});
+		$('#listUsersBtn').click(listUsersClicked);
+	}
+	
+	</script>
+</head>
+<body onload="initPage()">
+ 	<div class="center">
+		<div id="unAuthenticated">
+			<div class="form center" style="max-width:100%; text-align:left;">
+				<img src="img/logo2.png" />
+				<div style="float:right; text-align:right">
+					<button id="loginWithUsernameBtn">Login With User Name</button>
+					<br/>
+					<br/>
+					<button id="loginWithFaceRecognitionBtn">Login With Face Recognition</button>
+					<br/>
+					<span><img src="img/warning-24.png" /> &nbsp; Please remember to verify your email address for AWS Simple Email Service (SES) to be able to receive OTP emails</span>
+				</div>	
+			</div>
+			<br/>
+			
+			
+			<div id="loginWithUsernameDiv" class="form center" style="display:none; width: 500px">
+				<label class="header">Login With User Name</label>
+
+				<div id="usernameDiv">
+					<label>User name</label>
+					<input type="text" id="username" size="35" value="admin"/>
+					<button id="loginBtn">Login</button>
+				</div>
+				<br/>
+				<div id="otpDiv" style="display:none">
+					<label>Please Enter OTP Code</label>
+					<input type="text" id="otpCode" />
+					<button id="sendOtp">Continue</button>
+				</div>
+			</div>
+			<div id="loginWithFaceRecognitionDiv" style="display:none">
+				<div class="form center" style="padding:8px; max-width:80%" >
+					<label class="header">Login With Face Recognition</label>
+					<br/>
+					<div id="lwFRPictureGrabber">
+					</div>
+					<div class="chatContainer">
+						<div id="lwFRspeechStatus" class="speechStatus"></div>
+						<div id="lwFRchat" class="chat"></div>
+					</div>
+				</div>
+			</div>		
+		</div>
+		<div id="page" style="display:none">
+			<div class="form center" style="max-width:100%;text-align:left">
+				<img src="img/logo2.png" />
+				<div style="float:right">
+				<label class="header" id="loginInfo"> </label>
+				<button id="logout" style="float:right">Log out</button>
+				</div>
+			</div>
+			<br/>
+			<div id="userMgmtIntfDiv" style="display:none">
+				<div class="form center">
+					<button id="addUserBtn">Add User</button>
+					<button id="listUsersBtn">List Users</button>
+				</div>
+					<br/>
+				<div id="addUserDiv" style="display:none">
+					
+					<div class="form center" style="padding:8px; width: 400px" >
+						<label class="header">Add User</label>
+						<label>User Name</label>
+						<input type="text" id="addUser_username" value="dr.jay" />
+						<label>Name</label>
+						<input type="text" id="addUser_name" value="Dr. Jay" />
+						<label>Email</label>
+						<input type="text" id="addUser_email" value="" />
+						<label>Picture</label>
+						<div id="addUserPictureGrabber">
+						</div>
+						<br/>
+						<button id="saveUserBtn">Save User</button>
+					</div>
+				</div>
+				<div id="listUsersDiv" class="form center" style="display:none;max-width:100%">
+					<label class="header">Users</label>
+					<br/>
+					<br/>
+					<table id="users-table" align="center" cellspacing="2" cellpadding="8">
+					</table>
+				</div>
+			</div>
+			<div id="patientInterfaceDiv" style="display:none">
+				<div class="form center" style="padding:8px; max-width:80%" >
+					<label class="header">Manage Patients</label>
+					<div id="pictureGrabber">
+						<div id="outputFounded">
+							<span style="display:block;font-weight:bold">Picture of founded patient</span>
+							<img id="photoFounded" alt="The patient picture will appear in this box." width="320" height="240">
+						</div>
+						<p></p>
+					</div>
+					<div class="chatContainer">
+						<div id="speechStatus" class="speechStatus"></div>
+						<div id="chat" class="chat"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
