@@ -122,6 +122,10 @@ The doctors can login with their faces using 'Login With Face Recognition' butto
 The interface is fully hands-free.
 Pictures can be taken by saying 'shoot'.
 
+**Please note that for simplicity voice is recorded for 4 seconds and checked for silence.
+Speech status is changed from 'Listening' to 'Checking Silence' while checking silence.
+Please try to talk only when status is Listening.**
+
 After their users identified with their faces, an OTP code is send to log them in.
 The OTP code must be shown to the camera to extract the code using text detection.
 If the detected OTP code is validated, they are logged in automatically.
@@ -134,6 +138,8 @@ I have made a few additions which you can the find the details in [the Lex bot e
 
 Patients can be added by saying 'add patient'.
 When adding a user, a patient name and allergen name is requested.
+For patient name, you can say 'tyler','tim', 'addy', 'adam','jack'.
+As allergen name, you can say 'aspirin', 'ibuprofen' or 'pennicilin'.
 The patient is saved after the picture of the patient is taken.
 
 ### Checking patients
