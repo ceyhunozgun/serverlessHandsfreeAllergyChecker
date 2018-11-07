@@ -48,7 +48,7 @@ The `install.sh` script requires a configured [AWS Command Line Interface (CLI)]
 
 **Before running the `install.sh` script, set up your configuration in the `config.json` file**:
 
-**ONLY AWS_ACCOUNT_ID, REGION, BUCKET and FROM_ADDRESS is required, for other parameters the default values can be used**
+**ONLY AWS_ACCOUNT_ID, REGION, BUCKET and FROM_ADDRESS are required, for other parameters the default values can be used**
 
 - your AWS account (12-digit number). If an alias happens to be set for your root account, then you will need to go to ***Support > Support Center*** of your AWS Console and find your ***Account Number*** from the top right corner.
 - name of your CLI profile. This is the CLI profile that you want to represent while running `./install.sh` from the command-line. This value is usually found in square brackets inside the `~/.aws/credentials` file (`%UserProfile%\.aws\credentials` file in Windows) after installing the AWS CLI tools for your operating system. For more information, you may refer to the section called [Named Profiles](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-multiple-profiles) in the AWS CLI tools [user guide](http://docs.aws.amazon.com/cli/latest/userguide/).
