@@ -1,7 +1,7 @@
 # Serverless Hands-free Allergy Checker for AWS AI Hackathon 
 
 An allergy checker system designed for emergency services personnel. 
-It lets them save and check drug allergy information easily to prevent anaphylactic shocks.
+It lets them save and check drug allergy information (caused by medication like aspiring, pennicilin, ibuprofen, etc) easily to prevent anaphylactic shocks.
 It provides hands-free usage with voice interface and personnel can login with their face and an OTP code.
 The OTP code is extracted using text detection.
 
